@@ -1,0 +1,17 @@
+登入介面(login.php)=>判別帳密是否正確，資料庫程序login(logincheck.php)
+								    =>登入成功介面(welcome.php)
+										
+								    =>登入失敗介面(error.html)
+
+登出清除token，資料庫程序logout(logout.php)
+
+註冊介面(register.html)=>把表單資料透過伺服器傳入資料庫，資料庫程序register判斷是否手機號註冊過(register.php)
+								   			=>註冊成功跳回登入介面
+										
+								  			=>註冊失敗(echo:手機以綁定其他帳號)
+
+JS/register.js =>表單在送出前，用JS判斷UID或是EMAIL是否存在於資料庫中，將結果顯示於前端欄位後方
+formuid.php =>資料庫程序uidregister
+formemail.php =>資料庫程序emailregister
+
+db.php=>連到本地端的資料庫，資料庫名稱為charites
