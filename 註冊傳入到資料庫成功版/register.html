@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>註冊會員</title>
+    <script src="./JS/register.js"></script>
+</head>
+
+<body>
+    <!-- http://localhost/register.html -->
+    <form action="register.php" method="post">
+        <!--
+        1.註冊資訊不用非同步載入，直接提交表單；失去焦點時驗證使用者名稱密碼是否正確，再用ajax非同步載入資料；
+        2.form表單作用：收集使用者資訊並提交給伺服器；
+        3.屬性action作用：定義表單被提交時發生的動作，通常定義的是伺服器上處理程式的地址(url)，提交到註冊的php檔案，預設提交給本頁；
+        4.屬性method作用：指定表單資料的提交方式。
+          get(預設值)——明文提交，待提交的資料會顯示在位址列上；
+          post——隱式提交，提交的資料不會顯示在位址列上。
+        -->
+        <!--控制元件提交資訊，巢狀在form標記裡面-->
+        <!--登入名稱-文字方塊-->
+
+        <div>
+            <label for="uid" class="register-label">帳號</label>
+            <span id="userinfo"></span>
+            <p class="point01">※帳號為3~10位數，可以輸入數字、字母、底線</p>
+            <input id="uid" name="uid" type="text" class="register-input" placeholder="請輸入帳號" required="required"
+                pattern="\w{3,10}"><br><br>
+
+            <label for="cname" class="register-label">姓名</label>
+            <input id="cname" name="cname" type="text" class="register-input" placeholder="請輸入姓名"
+                required="required"><br><br>
+
+            <input id="upwd" name="upwd" type="password" class="register-input"
+                placeholder="請輸入8~20位數，需包含一個英文及一個數字，英文不分大小寫" required="required"
+                pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{8,20}$" oninput="setCustomValidity('');"><br><br>
+
+            <label for="checkpwd" class="register-label">確認密碼</label><br>
+            <input id="checkpwd" name="checkpwd" type="password" class="register-input"
+                placeholder="請輸入8~20位數，需包含一個英文及一個數字，英文不分大小寫" required="required" pattern="[a-zA-Z0-9]{8,}"
+                oninput="setCustomValidity('');" onchange="if(document.getElementById('upwd').value != document.getElementById('checkpwd').value){
+                    setCustomValidity('密碼不吻合');}"><br><br>
+
+            <label for="phone" class="register-label">手機號碼</label>
+            <p class="point01">※為保護你的個人資料，手機一旦綁定則無法變更或連結其他電子郵件</p>
+            <input id="phone" name="phone" type="text" class="register-input" placeholder="請輸入手機號碼，ex:0911222333"
+                required="required" maxlength="10" pattern="09\d{2}\d{6}"><br><br>
+
+            <label for="email" class="register-label">電子信箱</label>
+            <span id="emailinfo"></span><br>
+            <input id="email" name="email" type="email" class="register-input" placeholder="請輸入電子信箱" required="required"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" /><br><br>
+
+            <input type="radio" name="gender" id="male" value="0" checked>
+            <label for="male">女</label>
+            <input type="radio" name="gender" id="female" value="1">
+            <label for="female">男</label><br><br>
+
+            <button id="register-button">加入會員</button><br><br>
+        </div>
+
+        <div class="under-register">
+
+            <span>已有會員帳號?</span>
+            <span class="u1">
+                <a href="./login.php">返回登入頁面</a>
+            </span>
+        </div>
+    </form>
+</body>
+
+</html>
